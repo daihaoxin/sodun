@@ -2,17 +2,27 @@
   "name": "sodun",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nx run-many --target=test --all",
+    "prettier:fix": "prettier --write ./**/*.{js,jsx,ts,tsx,cjs,css,less,scss,json}",
+    "@sodun/help-use-esm-in-nodejs:build": "nx run @sodun/help-use-esm-in-nodejs:build"
   },
   "devDependencies": {
+    "@babel/cli": "7.18.9",
+    "@babel/core": "7.18.9",
     "@babel/eslint-parser": "7.18.9",
+    "@babel/plugin-transform-modules-commonjs": "7.18.6",
+    "@babel/preset-env": "7.18.9",
     "eslint": "8.20.0",
     "eslint-config-alloy": "4.6.2",
+    "jest": "28.1.3",
+    "nx": "14.4.3",
     "prettier": "2.7.1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
 }

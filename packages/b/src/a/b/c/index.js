@@ -1,4 +1,4 @@
-import "../../../index.js";
+import '../../../index.js';
 
 console.log(global.getFileName(import.meta.url));
 console.log(global.getDirName(import.meta.url));

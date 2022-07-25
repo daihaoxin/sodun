@@ -1,4 +1,4 @@
-import "@sodun/a";
+import '@sodun/a';
 
 console.log(global.getFileName(import.meta.url));
 console.log(global.getDirName(import.meta.url));

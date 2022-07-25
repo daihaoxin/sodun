@@ -1,0 +1,32 @@
+{
+  "name": "@sodun/help-use-esm-in-nodejs",
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@7.5.1",
+  "main": "./src/index.js",
+  "exports": {
+    "node": {
+      "import": "./src/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "default": "./lib/index.cjs"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "build": "rimraf ./lib && babel src --out-dir lib --out-file-extension .cjs"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "eslintIgnore": [
+    "lib"
+  ],
+  "eslintConfig": {
+    "parserOptions": {
+      "babelOptions": {
+        "rootMode": "upward"
+      }
+    }
+  }
+}
