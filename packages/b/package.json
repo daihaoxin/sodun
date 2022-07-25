@@ -1,0 +1,15 @@
+{
+	"name": "@sodun/b",
+	"version": "1.0.0",
+	"type": "module",
+	"packageManager": "pnpm@7.5.1",
+	"scripts": {
+		"start": "node ./src/a/b/c/index.js"
+	},
+	"dependencies": {
+		"@sodun/a":"workspace:*"
+	},
+	"engines": {
+		"node": ">= 16.0.0"
+	}
+}
