@@ -1,0 +1,46 @@
+{
+	"extends": "../../tsconfig.base.json",
+	// 解决 ts-node 找不到全局类型的问题，等价于 ts-node --files filename.ts
+	"ts-node": {
+		"files": true,
+		"transpileOnly": true,
+		"require": [
+			"typescript-transform-paths/register"
+		]
+	},
+	"compilerOptions": {
+		"baseUrl": ".",
+		"noEmit": false,
+		"outDir": "./dist",
+		"module": "ESNext",
+		"target": "ESNext",
+//		"declarationDir": "./dist/typing",
+//		"declaration": true,
+		// 配置路径别名映射
+		"paths": {
+			"@/*": [
+				"src/*"
+			]
+		},
+		"plugins": [
+			// 转换输出 js 文件中的路径
+			{
+				"transform": "typescript-transform-paths"
+			},
+			// 转换输出 .d.ts 文件中的路径
+			{
+				"transform": "typescript-transform-paths",
+				"afterDeclarations": true
+			}
+		]
+	},
+	/* 指定编译文件或排除指定编译文件 */
+	"include": [
+		"typing/**/*.d.ts",
+		"src/**/*.ts",
+	],
+	"exclude": [
+		"**/*.spec.ts",
+		"**/*.test.ts"
+	]
+}

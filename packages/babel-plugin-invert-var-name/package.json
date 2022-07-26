@@ -1,0 +1,31 @@
+{
+	"name": "@pnpm-test/babel-plugin-invert-var-name",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"build": "ttsc",
+		"test": "jest"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"ts-node": "10.9.1",
+		"ttypescript": "1.5.13",
+		"typescript-transform-paths": "3.3.1"
+	},
+	"engines": {
+		"node": ">= 16.0.0"
+	},
+	"eslintIgnore": [
+		"./lib",
+		"./dist"
+	],
+	"eslintConfig": {
+		"parserOptions": {
+			"babelOptions": {
+				"rootMode": "upward"
+			}
+		}
+	}
+}

@@ -20,7 +20,7 @@
     "node": ">= 16.0.0"
   },
   "eslintIgnore": [
-    "lib"
+    "./lib","./dist"
   ],
   "eslintConfig": {
     "parserOptions": {

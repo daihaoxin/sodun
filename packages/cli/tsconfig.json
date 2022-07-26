@@ -1,0 +1,22 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"noEmit": false,
+		"outDir": "./dist",
+		"module": "ESNext",
+		"target": "ESNext",
+//		"declarationDir": "./dist/typing",
+//		"declaration": true
+	},
+	/* 指定编译文件或排除指定编译文件 */
+	"include": [
+		"typing/**/*.d.ts",
+		"src/**/*.ts",
+	],
+	"exclude": [
+		"__tests__",
+		"**/*.spec.ts",
+		"**/*.test.ts"
+	]
+}

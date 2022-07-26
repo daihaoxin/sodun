@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['alloy'],
+  extends: ['alloy', 'alloy/react', 'alloy/typescript'],
   // 这配置用在 monorepo 项目中，monorepoRoot下面有babel的配置即可，不用每个微应用添加babel的配置文件.
   // 只要在子项目下的.eslintrc.js里添加上这个配置即可
   /* parserOptions: {
