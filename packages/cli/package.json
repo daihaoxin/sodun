@@ -2,13 +2,13 @@
 	"name": "@sodun/cli",
 	"version": "1.0.0",
 	"description": "",
-	"type": "module",
 	"packageManager": "pnpm@7.5.1",
 	"binName": "sodun",
 	"bin": {
 		"sodun": "./dist/index.js"
 	},
 	"scripts": {
+		"a": "nodemon -w src --exec babel-node --extensions .ts ./src/b",
 		"start": "nodemon -e ts -w src --exec babel --extensions .ts src --out-dir dist",
 		"build": "babel --extensions .ts src --out-dir dist",
 		"test": "jest"

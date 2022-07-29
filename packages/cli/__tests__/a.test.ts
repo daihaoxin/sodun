@@ -1,3 +1,4 @@
-test('100-100', () => {
-  expect(100).toBe(100);
+import sum from '@/ss/uu';
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
 });
