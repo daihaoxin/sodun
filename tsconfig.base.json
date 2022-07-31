@@ -4,6 +4,7 @@
 		"module": "commonjs",
 		"target": "ESNext",
 		"moduleResolution": "node",
+		"resolveJsonModule": true,
 		"noEmit": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,

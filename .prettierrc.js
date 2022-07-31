@@ -36,7 +36,7 @@ module.exports = {
   // vue 文件中的 script 和 style 内不用缩进
   vueIndentScriptAndStyle: false,
   // 换行符使用 lf
-  endOfLine: 'crlf',
+  endOfLine: 'lf',
   // 格式化嵌入的内容
   embeddedLanguageFormatting: 'auto',
   // html, vue, jsx 中每个属性占一行

@@ -8,8 +8,9 @@
     "@sodun/help-use-esm-in-nodejs:build": "nx run @sodun/help-use-esm-in-nodejs:build"
   },
   "dependencies": {
-    "@sodun/cli": "^1.0.0",
-    "rimraf": "^3.0.2"
+    "fs-extra": "10.1.0",
+    "rimraf": "3.0.2",
+    "shelljs": "0.8.5"
   },
   "devDependencies": {
     "@babel/cli": "7.18.9",
