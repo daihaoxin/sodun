@@ -8,10 +8,10 @@
 		"sodun": "./dist/index.js"
 	},
 	"scripts": {
-		"a": "nodemon -w src --exec babel-node --extensions .ts ./src/b",
+		"run": "nodemon -w src --exec babel-node --extensions .ts ./src/b",
 		"start": "nodemon -e ts -w src --exec babel --extensions .ts src --out-dir dist",
 		"build": "babel --extensions .ts src --out-dir dist",
-		"test": "jest"
+		"test": "jest --watch"
 	},
 	"keywords": [
 		"sodun"
@@ -19,15 +19,19 @@
 	"author": "daihaoxin",
 	"license": "ISC",
 	"dependencies": {
-		"@sodun/help-use-esm-in-nodejs": "workspace: *",
 		"chalk": "4.1.2",
 		"clear": "0.1.0",
 		"commander": "9.3.0",
 		"cross-spawn": "7.0.3",
 		"figlet": "1.5.2",
 		"handlebars": "4.7.7",
+		"inquirer": "8.2.4",
 		"open": "8.4.0",
 		"ora": "5.4.1"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "9.0.13",
+		"@types/inquirer": "8.2.1"
 	},
 	"engines": {
 		"node": ">= 16.0.0"
