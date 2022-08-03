@@ -1,6 +1,8 @@
-import FsUtils from '../../src/common/utils/FsUtils';
-import path from 'path';
+// import { fs, vol } from 'memfs';
+// jest.mock('fs');
 import fs from 'fs';
+import FsUtils from '../../../src/common/utils/FsUtils';
+import path from 'path';
 describe('+ 测试模板创建的工具集合', () => {
   describe('+ isSafeProjectName() ', () => {
     test('> 判断项目名称是否符合规则', () => {
@@ -22,10 +24,18 @@ describe('+ 测试模板创建的工具集合', () => {
   describe('+ isEmptyFolder() ', () => {
     const EMPTY_DIR_NAME = 'emptyFolder';
     const HAS_FILE_DIR_NAME = 'hasFileFolder';
-    const emptyFolderPath = path.resolve(__dirname, `../resources/${EMPTY_DIR_NAME}`);
-    const hasFileFolderPath = path.resolve(__dirname, `../resources/${HAS_FILE_DIR_NAME}`);
+    const emptyFolderPath = path.resolve(__dirname, `../../resources/${EMPTY_DIR_NAME}`);
+    const hasFileFolderPath = path.resolve(__dirname, `../../resources/${HAS_FILE_DIR_NAME}`);
     const fileInFolder = path.resolve(hasFileFolderPath, 'test.txt');
     const notExitFolderPath = path.resolve(__dirname, `a/b/c/d/e/f`);
+    /* const json = {
+      './emptyFolder': '',
+      './hasFileFolder/test.txt': 'test',
+    };
+    vol.fromJSON(json, '/app');
+    beforeEach(() => {
+      jest.resetAllMocks();
+    }); */
     beforeEach(() => {
       fs.mkdirSync(emptyFolderPath);
       fs.mkdirSync(hasFileFolderPath);
@@ -37,13 +47,15 @@ describe('+ 测试模板创建的工具集合', () => {
       fs.rmdirSync(hasFileFolderPath);
     });
     test('> 判断给定的文件夹是否为空', () => {
+      // const emptyFolderPath
       expect(FsUtils.isEmptyFolder(emptyFolderPath)).toBe(true);
       expect(FsUtils.isEmptyFolder(hasFileFolderPath)).toBe(false);
+      expect(FsUtils.isEmptyFolder(fileInFolder)).toBe(false);
       expect(FsUtils.isEmptyFolder(notExitFolderPath)).toBe(false);
     });
   });
   describe('+ isFolderExist()', () => {
-    const exitFolderPath = path.resolve(__dirname, `../resources/exitFolderPath`);
+    const exitFolderPath = path.resolve(__dirname, `../../resources/exitFolderPath`);
     const notExitFolderPath = path.resolve(__dirname, `a/b/c/d/e/f`);
     beforeEach(() => {
       fs.mkdirSync(exitFolderPath);
@@ -58,7 +70,7 @@ describe('+ 测试模板创建的工具集合', () => {
     });
   });
   describe('+ isExist() ', () => {
-    const exitPath = path.resolve(__dirname, `../resources/exitFolder`);
+    const exitPath = path.resolve(__dirname, `../../resources/exitFolder`);
     const notExitPath = path.resolve(__dirname, `a/b/c/d/e/f`);
     const notExitFile = path.resolve(__dirname, 'a/b/c/d/e/f.txt');
     beforeEach(() => {

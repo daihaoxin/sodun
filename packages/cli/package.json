@@ -11,7 +11,8 @@
 		"run": "nodemon -w src --exec babel-node --extensions .ts ./src/b",
 		"start": "nodemon -e ts -w src --exec babel --extensions .ts src --out-dir dist",
 		"build": "babel --extensions .ts src --out-dir dist",
-		"test": "jest --watch"
+		"test": "jest --watch",
+		"test:coverage": "jest --coverage"
 	},
 	"keywords": [
 		"sodun"
@@ -31,7 +32,9 @@
 	},
 	"devDependencies": {
 		"@types/fs-extra": "9.0.13",
-		"@types/inquirer": "8.2.1"
+		"@types/inquirer": "8.2.1",
+		"@types/shelljs": "0.8.11",
+		"memfs": "3.4.7"
 	},
 	"engines": {
 		"node": ">= 16.0.0"

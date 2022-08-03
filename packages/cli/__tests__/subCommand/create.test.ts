@@ -1,8 +1,11 @@
-import create from '../../src/subCommand/create';
 import ChalkUtils from '../../src/common/utils/ChalkUtils';
-import chalk from 'chalk';
+import shell from 'shelljs';
 import handlebarsUtils from '../../src/common/utils/HandlebarsUtils';
 import MsgConstants from '../../src/common/MsgConstants';
+import path from 'path';
+import create from '../../src/subCommand/create';
+import chalk from 'chalk';
+import FsUtils from '../../src/common/utils/FsUtils';
 
 describe('+ create 子命令的测试', () => {
   test('> 项目名称不合规', () => {
@@ -13,7 +16,21 @@ describe('+ create 子命令的测试', () => {
       message = msg;
     });
     create(projectName);
-    expect(message).toBe(handlebarsUtils.formatString(MsgConstants.NOT_SAFE_PROJECT_NAME, { name: projectName }));
+    const msg = handlebarsUtils.formatString(MsgConstants.NOT_SAFE_PROJECT_NAME, { name: projectName });
+    expect(message).toEqual(msg);
   });
-  test('> 项目文件夹已存在且不为空', () => {});
+  describe('> 项目成功创建', () => {
+    const projectName = 'test_create_project';
+    const cwd = path.resolve(__dirname, '../resources');
+    const projectPath = path.resolve(cwd, projectName);
+    afterEach(() => {
+      shell.rm('-rf', projectPath);
+    });
+    it('> test', () => {
+      process.chdir(cwd);
+      create(projectName);
+      expect(true).toBe(FsUtils.exists(path.resolve(__dirname, `../resources/${projectName}`)));
+      expect(true).toBe(FsUtils.exists(path.resolve(__dirname, `../resources/${projectName}/index.js`)));
+    });
+  });
 });
