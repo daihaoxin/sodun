@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "test": "nx run-many --target=test --all",
+    "test2": "nx run @sodun/cli:test",
     "prettier:fix": "prettier --write ./**/*.{js,jsx,ts,tsx,cjs,css,less,scss,json}",
     "@sodun/help-use-esm-in-nodejs:build": "nx run @sodun/help-use-esm-in-nodejs:build"
   },

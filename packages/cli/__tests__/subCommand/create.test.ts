@@ -6,6 +6,8 @@ import path from 'path';
 import create from '../../src/subCommand/create';
 import chalk from 'chalk';
 import FsUtils from '../../src/common/utils/FsUtils';
+import describe from 'node:test';
+import { vol } from 'memfs';
 
 describe('+ create 子命令的测试', () => {
   test('> 项目名称不合规', () => {
@@ -18,6 +20,16 @@ describe('+ create 子命令的测试', () => {
     create(projectName);
     const msg = handlebarsUtils.formatString(MsgConstants.NOT_SAFE_PROJECT_NAME, { name: projectName });
     expect(message).toEqual(msg);
+  });
+  describe('> 目标文件夹已存在切不为空', () => {
+    beforeEach(() => {
+      vol.fromJSON(
+        {
+          'test/abc.txt': 'abc',
+        },
+        '/',
+      );
+    });
   });
   describe('> 项目成功创建', () => {
     const projectName = 'test_create_project';

@@ -1,5 +1,4 @@
 import InquiredQuestions from '../../src/common/InquiredQuestions';
-import HandlebarsUtils from '../../src/common/utils/HandlebarsUtils';
 
 describe('+ InquiredQuestions 互动问题测试', () => {
   it('> 目标文件夹已存在切不为空测试', () => {
