@@ -1,16 +1,14 @@
 import ChalkUtils from '../../src/common/utils/ChalkUtils';
-import shell from 'shelljs';
 import handlebarsUtils from '../../src/common/utils/HandlebarsUtils';
 import MsgConstants from '../../src/common/MsgConstants';
 import path from 'path';
 import create from '../../src/subCommand/create';
-import chalk from 'chalk';
 import FsUtils from '../../src/common/utils/FsUtils';
-import describe from 'node:test';
 import { vol } from 'memfs';
+import fsExtra from 'fs-extra';
 
 describe('+ create 子命令的测试', () => {
-  test('> 项目名称不合规', () => {
+  test('> 当项目名称不符合规则的时候，输出错误提示', () => {
     const spy = jest.spyOn(ChalkUtils, 'error');
     const projectName = '_sss';
     let message = '';
@@ -21,28 +19,18 @@ describe('+ create 子命令的测试', () => {
     const msg = handlebarsUtils.formatString(MsgConstants.NOT_SAFE_PROJECT_NAME, { name: projectName });
     expect(message).toEqual(msg);
   });
-  describe('> 目标文件夹已存在切不为空', () => {
-    beforeEach(() => {
-      vol.fromJSON(
-        {
-          'test/abc.txt': 'abc',
-        },
-        '/',
-      );
-    });
+  describe('> 当存在和项目同名的目录且不为空时，提示交互信息，n放弃，y覆盖目录并继续', () => {
+    it('>', () => {});
   });
   describe('> 项目成功创建', () => {
     const projectName = 'test_create_project';
-    const cwd = path.resolve(__dirname, '../resources');
-    const projectPath = path.resolve(cwd, projectName);
-    afterEach(() => {
-      shell.rm('-rf', projectPath);
-    });
     it('> test', () => {
-      process.chdir(cwd);
+      jest.spyOn(console, 'log').mockImplementation(() => {});
+      const emptyDirSyncSpy = jest.spyOn(fsExtra, 'emptyDirSync').mockImplementation(() => {});
+      const copySync = jest.spyOn(fsExtra, 'copySync').mockImplementation(() => {});
       create(projectName);
-      expect(true).toBe(FsUtils.exists(path.resolve(__dirname, `../resources/${projectName}`)));
-      expect(true).toBe(FsUtils.exists(path.resolve(__dirname, `../resources/${projectName}/index.js`)));
+      expect(emptyDirSyncSpy).toBeCalledTimes(1);
+      expect(copySync).toBeCalledTimes(1);
     });
   });
 });
