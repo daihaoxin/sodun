@@ -11,8 +11,9 @@
 		"run": "nodemon -w src --exec babel-node --extensions .ts ./src/b",
 		"start": "nodemon -e ts -w src --exec babel --extensions .ts src --out-dir dist",
 		"build": "babel --extensions .ts src --out-dir dist",
-		"test": "jest --watch __tests__/common/utils",
-		"test:coverage": "jest --coverage"
+		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"test:watch": "jest --watch"
 	},
 	"keywords": [
 		"sodun"

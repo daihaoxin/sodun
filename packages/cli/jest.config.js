@@ -16,5 +16,5 @@ module.exports = {
   /* moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   }, */
-  modulePathIgnorePatterns: ['resources'],
+  testPathIgnorePatterns: ['<rootDir>/__mocks__'],
 };

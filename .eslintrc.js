@@ -24,5 +24,6 @@ module.exports = {
   },
   rules: {
     // 自定义你的规则
+    'max-nested-callbacks': ['error', 5],
   },
 };
