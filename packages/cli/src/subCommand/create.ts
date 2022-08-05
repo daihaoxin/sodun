@@ -6,6 +6,7 @@ import ChalkUtils from '../common/utils/ChalkUtils';
 import handlebarsUtils from '../common/utils/HandlebarsUtils';
 import MsgConstants from '../common/MsgConstants';
 import InquiredQuestions from '../common/InquiredQuestions';
+import type { Answers } from 'inquirer';
 
 export default async (name: string) => {
   if (!FsUtils.isSafeProjectName(name)) {
@@ -14,7 +15,7 @@ export default async (name: string) => {
   }
   const distPath = path.resolve(process.cwd(), name);
   if (FsUtils.folderExists(distPath) && !FsUtils.isEmptyFolder(distPath)) {
-    const answer = await inquirer.prompt(InquiredQuestions.whetherOverwriteDistFolder(distPath));
+    const answer: Answers = await inquirer.prompt(InquiredQuestions.whetherOverwriteDistFolder(distPath));
     if (!answer[InquiredQuestions.WHETHER_OVERWRITE_DIST_FOLDER_QUESTION_NAME]) {
       process.exit(-1);
     }
